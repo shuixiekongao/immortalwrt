@@ -179,8 +179,10 @@ platform_pre_upgrade() {
 
 platform_do_upgrade() {
 	case "$(board_name)" in
+	cmcc,mr3000d-ci|\
 	cmcc,pz-l8|\
 	elecom,wrc-x3000gs2|\
+	elecom,wrc-x3000gst2|\
 	iodata,wn-dax3000gr)
 		local delay
 
@@ -211,7 +213,8 @@ platform_do_upgrade() {
 		remove_oem_ubi_volume ubi_rootfs
 		nand_do_upgrade "$1"
 		;;
-	xiaomi,ax6000)
+	xiaomi,ax6000|\
+	xiaomi,redmi-ax5400)
 		# Make sure that UART is enabled
 		fw_setenv boot_wait on
 		fw_setenv uart_en 1
@@ -229,7 +232,8 @@ platform_do_upgrade() {
 		nand_do_upgrade "$1"
 		;;
 	yuncore,ax830|\
-	yuncore,ax850)
+	yuncore,ax850|\
+	zyxel,scr50axe)
 		CI_UBIPART="rootfs"
 		remove_oem_ubi_volume ubi_rootfs
 		remove_oem_ubi_volume bt_fw

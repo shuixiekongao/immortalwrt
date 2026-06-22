@@ -118,6 +118,7 @@ define KernelPackage/drm-vc4
   TITLE:=Broadcom VC4 Graphics
   DEPENDS:= \
     @TARGET_bcm27xx +kmod-drm \
+    +kmod-cec-core \
     +kmod-sound-core \
     +kmod-sound-soc-core
   KCONFIG:= \
@@ -127,8 +128,7 @@ define KernelPackage/drm-vc4
     $(LINUX_DIR)/drivers/gpu/drm/display/drm_display_helper.ko \
     $(LINUX_DIR)/drivers/gpu/drm/drm_dma_helper.ko \
     $(LINUX_DIR)/drivers/gpu/drm/vc4/vc4.ko \
-    $(LINUX_DIR)/drivers/gpu/drm/drm_kms_helper.ko \
-    $(LINUX_DIR)/drivers/media/cec/core/cec.ko
+    $(LINUX_DIR)/drivers/gpu/drm/drm_kms_helper.ko
   AUTOLOAD:=$(call AutoProbe,vc4)
 endef
 

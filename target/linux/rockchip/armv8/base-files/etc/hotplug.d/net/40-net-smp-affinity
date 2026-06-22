@@ -45,6 +45,7 @@ nlnet,xiguapi-v3|\
 radxa,e20c|\
 radxa,e25|\
 sinovoip,rk3568-bpi-r2pro|\
+widora,mangopi-m28c|\
 widora,mangopi-m28k|\
 xunlong,orangepi-5-plus)
 	set_interface_core 2 "eth0"
@@ -67,6 +68,7 @@ xunlong,orangepi-r1-plus-lts)
 	set_interface_core 2 "eth0"
 	set_interface_core 4 "eth1" "xhci-hcd:usb[0-9]+"
 	;;
+friendlyarm,nanopi-m5|\
 friendlyarm,nanopi-r4s|\
 friendlyarm,nanopi-r4se|\
 friendlyarm,nanopi-r4s-enterprise|\
@@ -104,8 +106,5 @@ lyt,t68m)
 radxa,e52c)
 	set_interface_core 10 "lan"
 	set_interface_core 20 "wan"
-	;;
-widora,mangopi-m28c)
-	set_interface_core 2 "eth0"
 	;;
 esac

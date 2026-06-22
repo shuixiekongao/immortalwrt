@@ -91,6 +91,19 @@ define Device/d-link_dgs-1210-28p-f
 endef
 TARGET_DEVICES += d-link_dgs-1210-28p-f
 
+define Device/datto_l8
+  $(Device/uimage-rt-loader)
+  SOC := rtl8380
+  DEVICE_VENDOR := Datto
+  DEVICE_MODEL := L8
+  DEVICE_ALT0_VENDOR := Open Mesh
+  DEVICE_ALT0_MODEL := S8-L
+  DEVICE_PACKAGES += realtek-poe
+  UIMAGE_MAGIC := 0x00703400
+  IMAGE_SIZE := 13504k
+endef
+TARGET_DEVICES += datto_l8
+
 define Device/engenius_ews2910p-v1
   $(Device/engenius_ews2910p)
   SOC := rtl8380
@@ -313,6 +326,22 @@ define Device/panasonic_m8eg-pn28080k
 endef
 TARGET_DEVICES += panasonic_m8eg-pn28080k
 
+define Device/teltonika_tsw202
+  SOC := rtl8380
+  IMAGE_SIZE := 15168k
+  DEVICE_VENDOR := Teltonika
+  DEVICE_MODEL := TSW202
+  IMAGE/sysupgrade.bin := \
+  	append-kernel | \
+	pad-to 64k | \
+	append-rootfs | \
+	pad-rootfs | \
+	check-size | \
+	append-metadata
+  SUPPORTED_DEVICES := teltonika,tsw202
+endef
+TARGET_DEVICES += teltonika_tsw202
+
 define Device/tplink_sg2008p-v1
   SOC := rtl8380
   KERNEL_SIZE := 6m
@@ -417,6 +446,15 @@ define Device/zyxel_gs1900-24-a1
   SUPPORTED_DEVICES += zyxel,gs1900-24-v1
 endef
 TARGET_DEVICES += zyxel_gs1900-24-a1
+
+define Device/zyxel_gs1900-24-b1
+  $(Device/zyxel_gs1900)
+  SOC := rtl8382
+  DEVICE_MODEL := GS1900-24
+  DEVICE_VARIANT := B1
+  ZYXEL_VERS := AAHL
+endef
+TARGET_DEVICES += zyxel_gs1900-24-b1
 
 define Device/zyxel_gs1900-24e-a1
   $(Device/zyxel_gs1900)
